@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Dashboard</title>
+  <link rel="stylesheet" href="progress.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For charts -->
+</head>
+<body>
+
+  <!-- Simple Header -->
+  <header>
+    <div class="logo">SmartExam</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="feature.html">Back</a>
+    </nav>
+  </header>
+
+  <!-- Progress Section -->
+  <section class="progress-section">
+    <h1>My Progress</h1>
+    <p>Track your completion and improvement in exams and study plans.</p>
+
+    <div class="progress-cards">
+      <div class="card">
+        <h3>Study Completion</h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: 70%;">70%</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Practice Quizzes</h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: 45%;">45%</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Flashcards Reviewed</h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: 80%;">80%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <canvas id="progressChart"></canvas>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with ❤️ by Team Cyber Nova</p>
+  </footer>
+
+  <!-- Chart.js Script -->
+  <script>
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    const progressChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Week 1','Week 2','Week 3','Week 4','Week 5'],
+        datasets: [{
+          label: 'Study Hours',
+          data: [5, 8, 6, 10, 9],
+          fill: false,
+          borderColor: '#2b6cb0',
+          tension: 0.3
+        },{
+          label: 'Quizzes Completed',
+          data: [2, 3, 4, 5, 6],
+          fill: false,
+          borderColor: '#63b3ed',
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

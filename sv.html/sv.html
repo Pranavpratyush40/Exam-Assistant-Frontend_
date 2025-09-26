@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartExam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🔝 HEADER / NAVBAR -->
+ <header>
+  <div class="logo">MedhaAI</div>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="feature.html">Features <i class="fa fa-caret-down"></i></a>
+      </li>
+      <li><a href="#"><i class="fa-solid fa-book"></i> Resources</a></li>
+    <li class="profile">
+  <input type="checkbox" id="profile-toggle" hidden>
+  <label for="profile-toggle">
+    <img src="profilepic.jpg" alt="Profile">
+  </label>
+  <div class="profile-menu">
+    <a href="#">My Profile</a>
+    <a href="#">Settings</a>
+    <a href="#">Logout</a>
+  </div>
+</li>
+    </ul>
+  </nav>
+</header>
+<div class="chatbot">
+  <input type="checkbox" id="chat-toggle" hidden>
+  <label for="chat-toggle" class="chat-icon">
+    💬
+  </label>
+  <div class="chat-box">
+    <div class="chat-header">Chat with us</div>
+    <div class="chat-body">
+      <p>Hello! How can I help you?</p>
+    </div>
+    <div class="chat-footer">
+      <input type="text" placeholder="Type a message...">
+      <button>Send</button>
+    </div>
+  </div>
+</div>
+
+  <!-- 🏠 HOME / OVERVIEW SECTION -->
+  <section class="home">
+    <h1>Welcome to</h1>
+    <h1> <divclass="split-text-container">
+    <span class="text-part left">Medha</span>
+    <span class="text-part right">AI</span>
+    </div>
+</h1>
+    <p>
+      A personalized study and revision platform designed to boost your exam preparation.  
+      Track your progress, practice past papers, set your focus mode, and challenge yourself with beast mode.  
+      Learn smarter, not harder!
+    </p>
+  </section>
+
+  <!-- 📝 LOGIN / SIGNUP BOX -->
+  <div class="form-box-wrapper">
+    <div class="form-box">
+      <h2>Smart Exam Assistant</h2>
+
+      <!-- Tab Switch Buttons -->
+      <div class="tab-buttons">
+        <button id="loginTab" class="active">Login</button>
+        <button id="signupTab">Signup</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="active">
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="submit-btn">Login</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signupForm">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit" class="submit-btn signup-btn">Signup</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPT FOR TABS ===== -->
+  <script>
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    loginTab.addEventListener("click", () => {
+      loginTab.classList.add("active");
+      signupTab.classList.remove("active");
+      loginForm.classList.add("active");
+      signupForm.classList.remove("active");
+    });
+
+    signupTab.addEventListener("click", () => {
+      signupTab.classList.add("active");
+      loginTab.classList.remove("active");
+      signupForm.classList.add("active");
+      loginForm.classList.remove("active");
+    });
+  </script>
+
+  <!-- 🦶 FOOTER -->
+  <footer>
+    <p>Made with ❤️ by Team Cyber Nova</p>
+  </footer>
+
+</body>
+</html>

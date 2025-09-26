@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reminders</title>
+  <link rel="stylesheet" href="reminder.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">SmartExam</div>
+    <nav>
+      <a href="sv.html">Home</a>
+      <a href="feature.html">Back</a>
+    </nav>
+  </header>
+
+  <!-- Reminder Section -->
+  <section class="reminder-section">
+    <h1>My To-do</h1>
+    <p>Set To-do list with notes and track time left for each task.</p>
+
+    <div class="reminder-card">
+      <div class="input-wrapper">
+        <input type="text" id="reminderInput" placeholder="Add To-do...">
+        <input type="text" id="reminderNote" placeholder="Optional note...">
+        <input type="datetime-local" id="reminderTime">
+        <button id="addReminderBtn">Set</button>
+      </div>
+
+      <ul id="reminderList">
+        <!-- Reminders appear here -->
+      </ul>
+
+      <h2>Completed To-Do's</h2>
+      <ul id="completedList">
+        <!-- Completed reminders go here -->
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with ❤️ by Team Cyber Nova</p>
+  </footer>
+
+  <!-- JS Script -->
+ <script>
+const reminderInput = document.getElementById("reminderInput");
+const reminderNote = document.getElementById("reminderNote");
+const reminderTime = document.getElementById("reminderTime");
+const addReminderBtn = document.getElementById("addReminderBtn");
+const reminderList = document.getElementById("reminderList");
+const completedList = document.getElementById("completedList");
+
+// Load saved reminders from localStorage
+let reminders = JSON.parse(localStorage.getItem("reminders")) || [];
+let completed = JSON.parse(localStorage.getItem("completed")) || [];
+
+// Function to render reminders
+function renderReminders() {
+  reminderList.innerHTML = "";
+  reminders.forEach((reminder, index) => {
+    const li = createReminderElement(reminder, index, false);
+    reminderList.appendChild(li);
+  });
+}
+
+// Function to render completed tasks
+function renderCompleted() {
+  completedList.innerHTML = "";
+  completed.forEach((reminder, index) => {
+    const li = createReminderElement(reminder, index, true);
+    completedList.appendChild(li);
+  });
+}
+
+// Create list item element
+function createReminderElement(reminder, index, isCompleted) {
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <div class="reminder-info">
+      <strong>${reminder.text}</strong>
+      ${reminder.note ? `<p class="note">${reminder.note}</p>` : ""}
+      <p class="time-left">Time left: <span class="countdown">calculating...</span></p>
+    </div>
+    ${!isCompleted ? `
+    <div class="buttons">
+      <button class="done-btn">✔</button>
+      <button class="delete-btn">✕</button>
+    </div>` : ""}
+  `;
+
+  // Delete button
+  if(!isCompleted){
+    li.querySelector(".delete-btn").addEventListener("click", () => {
+      reminders.splice(index, 1);
+      saveData();
+      renderReminders();
+    });
+
+    // Done button
+    li.querySelector(".done-btn").addEventListener("click", () => {
+      const doneItem = reminders.splice(index, 1)[0];
+      completed.push(doneItem);
+      saveData();
+      renderReminders();
+      renderCompleted();
+    });
+  }
+
+  // Countdown Timer
+  const countdownSpan = li.querySelector(".countdown");
+  function updateCountdown() {
+    const now = new Date();
+    const target = new Date(reminder.time);
+    const diff = target - now;
+
+    if(diff <= 0){
+      countdownSpan.textContent = "Time is up!";
+      alert(`⏰ Reminder: ${reminder.text}`);
+      clearInterval(interval);
+      return;
+    }
+
+    const hrs = Math.floor(diff / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    countdownSpan.textContent = `${hrs}h ${mins}m ${secs}s`;
+  }
+
+  updateCountdown();
+  const interval = setInterval(updateCountdown, 1000);
+
+  return li;
+}
+
+// Save data to localStorage
+function saveData() {
+  localStorage.setItem("reminders", JSON.stringify(reminders));
+  localStorage.setItem("completed", JSON.stringify(completed));
+}
+
+// Add reminder
+addReminderBtn.addEventListener("click", () => {
+  const text = reminderInput.value.trim();
+  const note = reminderNote.value.trim();
+  const time = reminderTime.value;
+
+  if(text === "" || time === "") return;
+
+  reminders.push({ text, note, time });
+  saveData();
+  renderReminders();
+
+  // Clear input
+  reminderInput.value = "";
+  reminderNote.value = "";
+  reminderTime.value = "";
+});
+
+// Initial render
+renderReminders();
+renderCompleted();
+</script>
+
+  
+
+</body>
+</html>

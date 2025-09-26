@@ -1,0 +1,218 @@
+/* ===== General Styles ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f8faff;
+  color: #333;
+}
+
+header {
+  background: #2b6cb0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.hover-container {
+    display: inline-block;
+    position: relative;
+}
+
+.explosive-text {
+    font-size: 3rem;
+    color: #fff;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s ease-out;
+}
+
+.explosive-text:hover {
+    transform: scale(1.1);
+}
+
+.explosive-text:hover::before,
+.explosive-text:hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: burst 0.8s ease-out forwards;
+}
+
+.explosive-text:hover::before {
+    background: radial-gradient(circle, rgba(255, 0, 150, 0.6), transparent);
+    z-index: -1;
+}
+
+.explosive-text:hover::after {
+    background: radial-gradient(circle, rgba(0, 200, 255, 0.6), transparent);
+    z-index: -2;
+}
+
+@keyframes burst {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+header .logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+header nav a {
+  color: #fff;
+  font-weight: bold;
+  margin-left: 40px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Past Papers Section ===== */
+.past-papers {
+  background: #f8faff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.past-papers .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.past-papers h1 {
+  font-size: 2.5rem;
+  color: #2b6cb0;
+  margin-bottom: 10px;
+}
+
+.past-papers p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.filters input[type="text"],
+.filters select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+
+.filters input[type="text"]:focus,
+.filters select:focus {
+  border-color: #2b6cb0;
+  box-shadow: 0 0 5px rgba(43,108,176,0.4);
+}
+
+/* Papers Grid */
+.papers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Paper Card */
+.paper-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+
+.paper-card h3 {
+  color: #2b6cb0;
+  margin-bottom: 8px;
+}
+
+.paper-card p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Download Button */
+.paper-card .download-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #2b6cb0, #63b3ed);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.paper-card .download-btn:hover {
+  background: linear-gradient(135deg, #1a4e8c, #4290e0);
+  transform: translateY(-2px);
+}
+
+/* Hover Effect on Card */
+.paper-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Footer */
+footer {
+  background: #1e3a5f;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 50px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .past-papers h1 {
+    font-size: 2rem;
+  }
+
+  .filters input[type="text"],
+  .filters select {
+    width: 90%;
+  }
+}

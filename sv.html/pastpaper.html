@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Past Papers</title>
+  <link rel="stylesheet" href="pastpaper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">SmartExam</div>
+    <nav>
+      <a href="sv.html">Home</a>
+      <a href="feature.html">Back</a>
+    </nav>
+  </header>
+
+  <!-- Past Paper Section -->
+  <section class="past-papers">
+    <div class="container">
+       <div class="hover-container">
+        <h1 class="explosive-text">Past Papers</h1>
+    </div>
+      <p>Access previous years’ exam papers for different subjects and semesters. Download PDFs for reference and practice.</p>
+
+      <!-- Filters -->
+      <div class="filters">
+        <input type="text" id="search" placeholder="Search by subject or keyword...">
+        <select id="subjectFilter">
+          <option value="">All Subjects</option>
+          <option value="math">Mathematics</option>
+          <option value="physics">Physics</option>
+          <option value="chemistry">Chemistry</option>
+          <option value="cs">Computer Science</option>
+        </select>
+        <select id="yearFilter">
+          <option value="">All Years</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+        </select>
+      </div>
+
+      <!-- Past Papers Grid -->
+      <div class="papers-grid">
+        <div class="paper-card">
+          <h3>Mathematics</h3>
+          <p>Semester: 2 | Year: 2025</p>
+          <p>File: PDF</p>
+          <a href="#" class="download-btn">Download</a>
+        </div>
+        <div class="paper-card">
+          <h3>Physics</h3>
+          <p>Semester: 4 | Year: 2024</p>
+          <p>File: PDF</p>
+          <a href="#" class="download-btn">Download</a>
+        </div>
+        <div class="paper-card">
+          <h3>Chemistry</h3>
+          <p>Semester: 2 | Year: 2023</p>
+          <p>File: PDF</p>
+          <a href="#" class="download-btn">Download</a>
+        </div>
+        <div class="paper-card">
+          <h3>Computer Science</h3>
+          <p>Semester: 6 | Year: 2025</p>
+          <p>File: PDF</p>
+          <a href="#" class="download-btn">Download</a>
+        </div>
+        <!-- Add more paper cards here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with ❤️ by Team Cyber Nova</p>
+  </footer>
+
+</body>
+</html>

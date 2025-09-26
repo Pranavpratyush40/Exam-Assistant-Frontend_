@@ -1,0 +1,139 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f8faff;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: #2b6cb0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+header .logo { font-size: 1.4rem; font-weight: 600; }
+header nav a { color: #fff; font-weight: bold;
+margin-left: 40px;
+gap: 20px;
+text-decoration: none; }
+header nav a:hover { text-decoration: underline; }
+
+/* Reminder Section */
+.reminder-section {
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+}
+.reminder-section h1 { color: #2d3e8b; margin-bottom: 10px; }
+.reminder-section p { margin-bottom: 30px; color: #555; font-size: 1.1rem; }
+.reminder-section h2 { margin-top: 30px; color: #2d3e8b; }
+
+/* Reminder Card */
+.reminder-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Input Wrapper */
+.input-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.input-wrapper input[type="text"], .input-wrapper input[type="datetime-local"] {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.input-wrapper button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg,#2b6cb0,#63b3ed);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.input-wrapper button:hover {
+  background: linear-gradient(135deg,#1a4e8c,#4290e0);
+}
+
+/* Reminder List */
+#reminderList, #completedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#reminderList li, #completedList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0f4ff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.reminder-info {
+  text-align: left;
+}
+.note {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+.time-left {
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
+/* Done / Completed */
+.completed .reminder-info strong,
+.completed .reminder-info .note,
+.completed .time-left {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Buttons */
+.buttons button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.done-btn {
+  background: #38a169;
+  color: #fff;
+}
+.done-btn:hover { background: #2f855a; }
+.delete-btn {
+  background: #e53e3e;
+  color: #fff;
+}
+.delete-btn:hover { background: #c53030; }
+
+/* Footer */
+footer {
+  background: #1e3a5f;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 50px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
